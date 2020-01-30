@@ -1,5 +1,9 @@
 ﻿class MobyDick {
-	const text = ` 
+	constructor(){
+		this.text = '';
+	}
+	get text(){ 
+		this.text = ` 
 		CHAPTER 1. Loomings.
 
 		Call me Ishmael. Some years ago—never mind how long precisely—having
@@ -21116,7 +21120,8 @@
 		sail drew near, nearer, and picked me up at last. It was the
 		devious-cruising Rachel, that in her retracing search after her missing
 		children, only found another orphan.
-`
+		` 	
+	}
 }
 
 export default MobyDick;
