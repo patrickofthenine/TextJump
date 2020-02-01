@@ -1,26 +1,22 @@
 class Parser {
-	constructor(){
-		this.results = {}
+	parse(source){
+		this.source = source;
+		this.results = {
+			source: 	this.source,
+			parsed: 	this.parsed,
+		}
+		return this.parsed;
 	}
-	parse(book){
-		console.log(book);	
-		this.book = book
-		this.results['body'] = this.body;
-		this.results['chapters'] = this.chapters;
-		this.results['paragraphs'] = this.paragraphs;
-		this.results['lines'] = this.lines;
-		this.results['words'] = this.words;
-		this.results['letters'] = this.letters;
+	
+	get parsed(){
+		let regex = /\r?\n|\r/g
+		let text = this.source.text.replace(regex, " ")
+		text = text
+			.split(" ")
+			.map( (t)=>{return t.trim()})
+			.filter( (t)=>{ if(t.length>0){return t} })	
+		return text
 	}
-
-	get body(){
-		return (this.book) ? this.book.text : null;
-	}
-	get chapters(){}
-	get paragraphs(){}
-	get lines(){}
-	get words(){}
-	get letters(){}
 };
 
 export default Parser;
